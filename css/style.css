@@ -69,12 +69,18 @@ svg {
   }
 }
 
-.canvas {
-  --border-thickness: 1px;
+h1 {
+  font-size: 2rem;
   margin: 2rem;
-  width: calc(var(--canvas-width) + calc(var(--border-thickness) * 2));
+  margin-left: 10rem;
+}
+
+.canvas {
+  --border-thickness: 2px;
+  margin: 2rem;
+  width: var(--canvas-width);
   aspect-ratio: 1;
-  border: solid black var(--border-thickness);
+  outline: solid black var(--border-thickness);
   display: flex;
   flex-wrap: wrap;
   flex-basis: 100%;
@@ -83,5 +89,11 @@ svg {
 
 .square {
   /* border: solid red; */
+  outline: solid black 1px;
   flex-basis: calc(var(--canvas-width) / 16);
+}
+
+.hover {
+  background-color: black;
+  outline: solid black 1px;
 }
