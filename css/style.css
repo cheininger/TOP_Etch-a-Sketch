@@ -93,7 +93,6 @@ h1 {
   flex-basis: calc(var(--canvas-width) / 16);
 }
 
-.hover {
+.black {
   background-color: black;
-  outline: solid black 1px;
 }
