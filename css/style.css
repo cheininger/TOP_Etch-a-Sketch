@@ -72,7 +72,7 @@ svg {
 h1 {
   font-size: 2rem;
   margin: 2rem;
-  margin-left: 10rem;
+  margin-left: 2rem;
 }
 
 .canvas {
@@ -95,4 +95,18 @@ h1 {
 
 .black {
   background-color: black;
+}
+
+.button-container button {
+  width: 5rem;
+  aspect-ratio: 1;
+  background-color: coral;
+  border: solid black 2px;
+  border-radius: 0.5rem;
+}
+
+.button-container {
+  display: flex;
+  margin-left: 2rem;
+  gap: 2rem;
 }
