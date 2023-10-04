@@ -1,33 +1,34 @@
 const canvas = document.querySelector(".canvas");
 
-for (let i = 1; i <= 16 * 16; i++) {
-  const square = document.createElement("div");
-  square.setAttribute("class", `square square-${i}`);
-  canvas.appendChild(square);
+function setGrid(cellNumber = 16) {
+  for (let i = 1; i <= cellNumber * cellNumber; i++) {
+    const square = document.createElement("div");
+    square.setAttribute("class", `square square-${i}`);
+    canvas.appendChild(square);
+  }
 }
 
-const squares = document.querySelectorAll(".square");
-
-const drawButton = document.querySelector(".button-draw");
-const eraseButton = document.querySelector(".button-erase");
-const resizeButton = document.querySelector(".button-resize");
-
-drawButton.addEventListener("click", () => {
-  console.log("clicked");
+function drawBlack() {
+  const squares = document.querySelectorAll(".square");
   for (let i = 0; i < squares.length; i++) {
     squares[i].addEventListener("mouseover", function () {
       squares[i].classList.add("black");
     });
   }
-});
+}
 
-eraseButton.addEventListener("click", () => {
+function eraseCell() {
+  const squares = document.querySelectorAll(".square");
   for (let i = 0; i < squares.length; i++) {
     squares[i].addEventListener("mouseover", function () {
       squares[i].classList.remove("black");
     });
   }
-});
+}
+
+const drawButton = document.querySelector(".button-draw");
+const eraseButton = document.querySelector(".button-erase");
+const resizeButton = document.querySelector(".button-resize");
 
 resizeButton.addEventListener("click", () => {
   const size = prompt(
@@ -43,11 +44,7 @@ resizeButton.addEventListener("click", () => {
       canvas.removeChild(canvas.firstChild);
     }
 
-    for (let i = 1; i <= size * size; i++) {
-      const square = document.createElement("div");
-      square.setAttribute("class", `square square-${i}`);
-      canvas.appendChild(square);
-    }
+    setGrid(size);
 
     const stylesheet = document.styleSheets[0];
     let elementRules;
@@ -64,3 +61,7 @@ resizeButton.addEventListener("click", () => {
     );
   }
 });
+
+drawButton.addEventListener("click", drawBlack);
+
+eraseButton.addEventListener("click", eraseCell);

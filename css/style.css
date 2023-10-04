@@ -111,3 +111,15 @@ h1 {
   margin-left: 2rem;
   gap: 2rem;
 }
+
+#main-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.github-logo {
+  height: 2rem;
+}
