@@ -31,35 +31,38 @@ const eraseButton = document.querySelector(".button-erase");
 const resizeButton = document.querySelector(".button-resize");
 
 resizeButton.addEventListener("click", () => {
-  const size = prompt(
-    "How big (X x X) should the grid be? Please stay below 100!"
-  );
+  const size = prompt("How big should the grid be? (Maximum of 100!)");
 
-  if (size > 100) {
-    alert("You entered a number avoe 100. Please try again.");
-  } else {
-    console.log(size);
-
-    while (canvas.firstChild) {
-      canvas.removeChild(canvas.firstChild);
-    }
-
-    setGrid(size);
-
-    const stylesheet = document.styleSheets[0];
-    let elementRules;
-
-    for (let i = 0; i < stylesheet.cssRules.length; i++) {
-      if (stylesheet.cssRules[i].selectorText === ".square") {
-        elementRules = stylesheet.cssRules[i];
-      }
-    }
-
-    elementRules.style.setProperty(
-      "flex-basis",
-      `calc(var(--canvas-width) / ${size})`
-    );
+  if (isNaN(size)) {
+    alert("Please enter a positive integer. (Maximum of 100!)");
+    return;
+  } else if (size <= 0) {
+    alert("Please enter a positive integer. (Maximum of 100!)");
+    return;
+  } else if (size > 100) {
+    alert("You entered a number above 100. Please try again.");
+    return;
   }
+
+  while (canvas.firstChild) {
+    canvas.removeChild(canvas.firstChild);
+  }
+
+  setGrid(size);
+
+  const stylesheet = document.styleSheets[0];
+  let elementRules;
+
+  for (let i = 0; i < stylesheet.cssRules.length; i++) {
+    if (stylesheet.cssRules[i].selectorText === ".square") {
+      elementRules = stylesheet.cssRules[i];
+    }
+  }
+
+  elementRules.style.setProperty(
+    "flex-basis",
+    `calc(var(--canvas-width) / ${size})`
+  );
 });
 
 drawButton.addEventListener("click", drawBlack);
